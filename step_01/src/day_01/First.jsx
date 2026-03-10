@@ -1,5 +1,5 @@
 function First(){
-    retrun (
+    return (
         <>
         <h3>First component</h3>
         </>

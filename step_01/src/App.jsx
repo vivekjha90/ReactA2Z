@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import First from './day_01/First'
+import First from './day_01/First.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <>
