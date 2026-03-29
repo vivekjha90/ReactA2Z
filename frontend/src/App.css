@@ -1,0 +1,110 @@
+/* Global Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #f8fafc;
+}
+
+/* --- MODERN NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  height: 70px;
+  background:linear-gradient(135deg, rgb(113, 113, 224) 25%, rgba(155, 40, 232, 0.333) 10%); /* Clean white background */
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
+/* Logo */
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+
+.logo span {
+  color: #6366f1; /* Brand Indigo */
+}
+
+/* Links container */
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+/* Links */
+.nav-links a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+/* Hover State */
+.nav-links a:hover {
+  color: #6366f1;
+}
+
+/* Active Link Indicator (Dot instead of Underline) */
+.nav-links a.active {
+  color: #1e293b;
+  position: relative;
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #6366f1;
+  border-radius: 50%;
+}
+
+/* --- NEXT LEVEL LOGOUT BUTTON --- */
+.logout-container {
+  margin-top: auto;
+  padding: 1.5rem 0;
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center text */
+  gap: 10px;
+  padding: 12px;
+  background-color: #fff1f2; /* Lightest Red */
+  border: 1px solid #fecdd3; /* Soft Pinkish-Red border */
+  border-radius: 12px;
+  color: #e11d48; /* Vibrant Red */
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logout-btn:hover {
+  background-color: #e11d48; /* Solid Red on hover */
+  color: #ffffff;
+  box-shadow: 0 10px 15px -3px rgba(225, 29, 72, 0.2);
+  transform: translateY(-2px); /* Lift up effect */
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}

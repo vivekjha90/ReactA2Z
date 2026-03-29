@@ -1,0 +1,208 @@
+/* visitor.css */
+.visitor-container {
+  padding: 20px;
+}
+
+.visitor-header {
+  margin-bottom: 30px;
+}
+
+.visitor-header p {
+  color: #666;
+}
+
+.visitor-layout {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Card Styles */
+.form-section {
+  flex: 1;
+  min-width: 350px;
+}
+
+.log-section {
+  flex: 2;
+  min-width: 450px;
+}
+
+.form-card, .log-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.form-title {
+  margin-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* Form Elements */
+.visitor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-style {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.input-style {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  background: #fff;
+  outline: none;
+}
+
+/* Form Button Alignment Fix */
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.check-in-btn {
+  flex: 2;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.check-in-btn:hover {
+  background: #333;
+}
+
+.cancel-btn {
+  flex: 1;
+  padding: 12px;
+  background: #f4f4f4;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cancel-btn:hover {
+  background: #e8e8e8;
+}
+
+/* Table Styles */
+.visitor-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.visitor-table th {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #eee;
+  background: #f8f9fa;
+}
+
+.visitor-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.visitor-info-name {
+  font-weight: 500;
+}
+
+.visitor-info-phone {
+  font-size: 11px;
+  color: #888;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.status-in-service { background: #e1f5fe; color: #0288d1; }
+.status-waiting { background: #fff3e0; color: #ef6c00; }
+.status-completed { background: #e8f5e9; color: #2e7d32; }
+
+/* Action Column Fixes */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.edit-btn {
+  padding: 6px 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.delete-btn {
+  padding: 6px 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.reminder-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin-left: 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.reminder-btn:hover {
+  background-color: #45a049;
+}
+
+.reminder-btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}

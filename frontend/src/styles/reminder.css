@@ -1,0 +1,154 @@
+/* ── Variables ── */
+:root {
+  --rem-bg: #f0f2f7;
+  --rem-card: #ffffff;
+  --rem-header-from: #4338ca;
+  --rem-header-to: #6366f1;
+  --rem-text-primary: #1e1f26;
+  --rem-text-muted: #6b7280;
+  --rem-border: #e9ecf2;
+  --rem-row-hover: #f7f8ff;
+  --rem-shadow: 0 2px 16px rgba(79, 70, 229, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --rem-radius: 14px;
+  --rem-transition: 0.18s ease;
+}
+
+/* ── Container ── */
+.reminder-container {
+  padding: 36px 32px;
+  background: var(--rem-bg);
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: var(--rem-text-primary);
+}
+
+/* ── Header ── */
+.reminder-header {
+  margin-bottom: 24px;
+}
+
+.reminder-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--rem-text-primary);
+  letter-spacing: -0.3px;
+  margin: 0 0 6px;
+}
+
+.reminder-header p {
+  color: var(--rem-text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ── Card ── */
+.reminder-card {
+  background: var(--rem-card);
+  border-radius: var(--rem-radius);
+  box-shadow: var(--rem-shadow);
+  overflow: hidden;
+  border: 1px solid var(--rem-border);
+}
+
+/* ── Table ── */
+.reminder-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.reminder-table thead {
+  background: linear-gradient(120deg, var(--rem-header-from), var(--rem-header-to));
+}
+
+.reminder-table th {
+  padding: 15px 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  width: 25%;
+}
+
+/* Left-align first column */
+.reminder-table th:first-child,
+.reminder-table td:first-child {
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* ── Rows ── */
+.reminder-table tbody tr {
+  border-bottom: 1px solid var(--rem-border);
+  transition: background var(--rem-transition);
+}
+
+.reminder-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.reminder-table tbody tr:hover {
+  background: var(--rem-row-hover);
+}
+
+/* ── Cells ── */
+.reminder-table td {
+  padding: 13px 16px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--rem-text-primary);
+}
+/* ── Header ── */
+.reminder-header {
+  margin-bottom: 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Small badge above the title */
+.reminder-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(120deg, #ede9fe, #e0e7ff);
+  color: #4338ca;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid #c7d2fe;
+}
+
+/* Vibrant gradient title */
+.reminder-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+  background: linear-gradient(135deg, #4338ca 0%, #7c3aed 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.reminder-header p {
+  color: var(--rem-text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Decorative accent line */
+.reminder-header-divider {
+  width: 48px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4338ca, #ec4899);
+}

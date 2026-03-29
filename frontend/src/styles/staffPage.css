@@ -1,0 +1,178 @@
+/* Container */
+.staff-container {
+  padding: 20px;
+}
+
+/* Card */
+.staff-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+/* Form Grid */
+.staff-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  align-items: end;
+}
+
+/* Inputs */
+.staff-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Button */
+.staff-btn {
+  padding: 11px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Table */
+/* Table Container */
+.staff-table-container {
+  max-width: 1100px;
+  margin: 0 auto; /* center */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Table */
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 🔥 important */
+}
+
+/* Header */
+.staff-table th {
+  padding: 16px;
+  text-align: left;
+  background: #f4f6f8;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Cells */
+.staff-table td {
+  padding: 16px;
+  border-top: 1px solid #eee;
+  vertical-align: middle;
+}
+
+/* Column widths (VERY IMPORTANT) */
+.staff-table th:nth-child(1),
+.staff-table td:nth-child(1) {
+  width: 30%;
+}
+
+.staff-table th:nth-child(2),
+.staff-table td:nth-child(2) {
+  width: 20%;
+}
+
+.staff-table th:nth-child(3),
+.staff-table td:nth-child(3) {
+  width: 25%;
+}
+
+.staff-table th:nth-child(4),
+.staff-table td:nth-child(4) {
+  width: 25%;
+}
+
+/* Actions alignment */
+.staff-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+/* Row hover effect (premium feel) */
+.staff-table tbody tr:hover {
+  background-color: #f9fbfd;
+  transition: 0.2s;
+}
+
+/* Badge */
+.staff-badge {
+  background: #e7f1ff;
+  color: #007bff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Actions */
+.staff-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Common button style */
+.staff-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/*Edit Button */
+.staff-edit {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.staff-edit:hover {
+  background-color: #0056b3;
+}
+
+/* Delete Button */
+.staff-delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.staff-delete:hover {
+  background-color: #a71d2a;
+}
+
+.staff-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.staff-btn {
+  flex: 2; /* Main button is wider */
+}
+
+.staff-cancel-btn {
+  flex: 1; /* Cancel button is narrower */
+  padding: 10px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.staff-cancel-btn:hover {
+  background-color: #e0e0e0;
+}
