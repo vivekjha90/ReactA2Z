@@ -49,8 +49,8 @@ const login = async (req, res) => {
       { expiresIn: "7d" },
     );
 
-    res.cookie("accessToken", accessToken, { httpOnly: true });
-    res.cookie("refreshToken", refreshToken, { httpOnly: true });
+    res.cookie("accessToken", accessToken, { httpOnly: true,secure:true,sameSite:"None"});
+    res.cookie("refreshToken", refreshToken, { httpOnly: true,secure:true,sameSite:"None" });
     res.status(200).json({
       role: user.role,
       name: user.name,
