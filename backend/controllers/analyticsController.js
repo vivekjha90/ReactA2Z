@@ -14,7 +14,7 @@ exports.getServiceAnalytics = async (req, res) => {
       },
       { $unwind: { path: "$serviceInfo", preserveNullAndEmptyArrays: true } },
       {
-        // String date (YYYY-MM-DD)  to month
+        
         $group: {
           _id: { $month: { $dateFromString: { dateString: "$date" } } },
           count: { $sum: 1 },

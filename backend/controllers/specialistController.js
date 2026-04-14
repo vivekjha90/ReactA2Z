@@ -1,10 +1,43 @@
 const Specialist = require('../models/specialist');
 
 // GET all specialists
+// exports.getAllSpecialists = async (req, res) => {
+//   try {
+//     const specialists = await Specialist.find().sort({ createdAt: -1 });
+//     res.status(200).json(specialists);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// };
+
 exports.getAllSpecialists = async (req, res) => {
   try {
-    const specialists = await Specialist.find().sort({ createdAt: -1 });
-    res.status(200).json(specialists);
+    // Get query params
+    let { page = 0, size = 10 } = req.query;
+
+    // Convert to numbers
+    page = parseInt(page);
+    size = parseInt(size);
+
+    // Calculate skip
+    const skip = page * size;
+
+    // Fetch paginated data
+    const specialists = await Specialist.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(size);
+
+    // Get total count (for frontend pagination)
+    const total = await Specialist.countDocuments();
+
+    res.status(200).json({
+      data: specialists,
+      page,
+      size,
+      total,
+      totalPages: Math.ceil(total / size),
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

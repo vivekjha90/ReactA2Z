@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import "/src/styles/reminder.css"; 
 import { reminder } from "../API/menuPages";
 const Reminder = () => {

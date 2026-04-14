@@ -14,16 +14,14 @@ const VisitorSchema = new mongoose.Schema({
     enum: ['Waiting', 'In Service', 'Completed'], 
     default: 'Waiting' 
   },
-  reminderSent: {   //field for remiander
+  reminderSent: {   
     type: Boolean,
     default: false
   }
 }, 
 {
- collection:'newVisitor'
-},
-{ timestamps: true }
-
-);
+ collection:'newVisitor',
+ timestamps:true
+});
 
 module.exports = mongoose.model('Visitor', VisitorSchema);

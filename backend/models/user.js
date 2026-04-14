@@ -13,11 +13,11 @@ const userSchema= new mongoose.Schema({
     },
     password:{
         type:String,
-        required:[true]
+        required:[true,"password is required"]
     },
     role:{
         type:String,
-        enum: ['owner', 'specialist', 'staff'], 
+        enum: ['owner', 'specialist', 'staff','user'], 
         default: 'staff' 
     }
    

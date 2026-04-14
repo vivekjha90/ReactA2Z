@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "/src/styles/visitor.css";
-import { createVisitor, deleteVisitor, getAllVisitor, updateVisitor } from "../API/menuPages";
+import { createVisitor, deleteVisitor, getAllVisitor, sendTheReminder, updateVisitor } from "../API/menuPages";
 
 const Visitors = () => {
   const [visitors, setVisitors] = useState([]);
@@ -37,10 +37,10 @@ const Visitors = () => {
     e.preventDefault();
     try {
       if (editId) {
-        // PUT Request
+        
         await updateVisitor(id, formData);
       } else {
-        // POST Request
+        
         await createVisitor(formData);
       }
 
@@ -65,9 +65,7 @@ const Visitors = () => {
 
   const sendReminder = async (id) => {
     try {
-      await axios.post(
-        `http://localhost:8000/api/visitors/send-reminder/${id}`,
-      );
+      await sendTheReminder(id);
       alert("Reminder sent successfully");
 
       fetchVisitors();

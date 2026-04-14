@@ -47,9 +47,11 @@ export const deleteService= async(id)=>{
 
 //specialist Api calling
 //1. getSpecialist 
-export const getAllSpecialist= async()=>{
+export const getAllSpecialist= async(page=0, size=10)=>{
     const url= "/api/specialists";
-    const res= await axiosInstance.get(url);
+    const res= await axiosInstance.get(url,{
+        params:{page,size}
+    });
 
     return res;
 }
@@ -129,4 +131,10 @@ export const updateVisitor= async(id,formData)=>{
 export const deleteVisitor= async(id)=>{
     const url=`/api/visitors/${id}`;
     const res=await axiosInstance.delete(url);
+}
+
+//sendTheReminder
+export const sendTheReminder= async(id)=>{
+    const url=`/api/visitors/send-reminder/${id}`;
+    const res= await axiosInstance.post(url);
 }

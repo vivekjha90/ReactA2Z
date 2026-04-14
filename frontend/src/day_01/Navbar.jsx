@@ -1,20 +1,30 @@
 import { Link, useNavigate } from "react-router-dom";
+import { logoutUser } from "../API/authServices";
 
 
 function Navbar() {
   const navigate = useNavigate();
   
   
-  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("userRole");
 
  
-  const handleLogout = () => {
-    if(!window.confirm("Do you want to logout")) return ;
-    localStorage.clear(); 
+  const handleLogout = async () => {
+  if (!window.confirm("Do you want to logout")) return;
+
+  try {
+   
+    await logoutUser();
+   
+    localStorage.clear();
+
     alert("Logged out successfully!");
     navigate("/login");
-    window.location.reload(); 
-  };
+
+  } catch (err) {
+    console.error("Logout failed:", err);
+  }
+};
 
   return (
     <nav className="navbar">
@@ -23,7 +33,7 @@ function Navbar() {
         
 
         
-        {!token ? (
+        {!role ? (
           <>
             {/* <Link to="/home" className="home">Home</Link> */}
             {/* <Link to="/login">Login</Link>

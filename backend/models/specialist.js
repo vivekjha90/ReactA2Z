@@ -12,16 +12,14 @@ const SpecialistSchema = new mongoose.Schema({
   rating: { type: Number, default: 4.5 },
   status: { 
     type: String, 
-    enum: ['Available', 'In Session', 'On Break'], 
+    enum: ['Available', 'Not Availbale', 'On Break'], 
     default: 'Available' 
   },
   clients: { type: Number, default: 0 }
 }, 
 {
-  collection: 'newSpecialist'
-},
-{ timestamps: true }
-
-);
+  collection: 'newSpecialist',
+  timestamps: true 
+});
 
 module.exports = mongoose.model('Specialist', SpecialistSchema);

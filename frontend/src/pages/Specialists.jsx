@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "/src/styles/specialistPage.css";
-import { createSpecialist, deleteSpecialist, getAllSpecialist, updateSpecialist } from "../API/menuPages";
+import {
+  createSpecialist,
+  deleteSpecialist,
+  getAllSpecialist,
+  updateSpecialist,
+} from "../API/menuPages";
 
 const Specialists = () => {
   const [specialists, setSpecialists] = useState([]);
+   const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     expertise: "",
@@ -13,21 +20,21 @@ const Specialists = () => {
   });
   const [editId, setEditId] = useState(null);
 
- 
-
   // 1. Fetch Specialists
   const fetchSpecialists = async () => {
     try {
-      const res = await getAllSpecialist();
-      setSpecialists(res.data);
+      const res = await getAllSpecialist(page,3);
+      setSpecialists(res.data.data || []);
+      setTotalPages(res.data.totalPages || 0);
     } catch (err) {
       console.error("Error fetching specialists:", err);
+      setSpecialists([]);
     }
-  }; 
+  };
 
   useEffect(() => {
     fetchSpecialists();
-  }, []);
+  }, [page]);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -140,6 +147,17 @@ const Specialists = () => {
             <div className="card-header">
               <div className="avatar-circle">{spec.name.charAt(0)}</div>
               <div>
+                <span
+                  style={{
+                    color: "white",
+                    backgroundColor:
+                      spec.status === "Available" ? "green" : "red",
+                    padding: "4px",
+                    borderRadius: "10px",
+                  }}
+                >
+                  {spec.status}
+                </span>
                 <h3 className="spec-name">{spec.name}</h3>
                 <p className="spec-expertise">
                   {spec.expertise} ({spec.level})
@@ -151,6 +169,7 @@ const Specialists = () => {
                     ({spec.clients || 4} reviews)
                   </span>
                 </div>
+
                 <span className="rating-count">
                   Experience:{spec.experience} year
                 </span>
@@ -170,7 +189,44 @@ const Specialists = () => {
             </div>
           </div>
         ))}
+        {/* NEW: Pagination Buttons */}
+      {totalPages > 0 && (
+        <div className="pagination-container" style={{ 
+          position:'fixed',
+          bottom:0,
+          left:450,
+          right:0,
+          top:630,
+          // display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          gap: '20px', 
+          
+          paddingBottom: '40px' 
+        }}>
+          <button 
+            className="action-btn" 
+            disabled={page === 0} 
+            onClick={() => setPage(prev => prev - 1)}
+          >
+            Previous
+          </button>
+
+          <span style={{ fontWeight: 'bold' }}>
+            Page {page + 1} of {totalPages}
+          </span>
+
+          <button 
+            className="action-btn" 
+            disabled={page >= totalPages - 1} 
+            onClick={() => setPage(prev => prev + 1)}
+          >
+            Next
+          </button>
+        </div>
+      )}
       </div>
+      
     </div>
   );
 };

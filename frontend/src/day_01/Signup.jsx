@@ -83,6 +83,7 @@ function Signup() {
           <option value="owner">Owner</option>
           <option value="staff">Staff / Internal User</option>
           <option value="specialist">Specialist</option>
+          <option value="user">External User</option>
         </select>
 
         <button type="submit" className="auth-btn">

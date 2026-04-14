@@ -12,12 +12,17 @@ function Login() {
 
   const navigate = useNavigate();
 
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (e) => {
+  const { name, value } = e.target;
+  
+  if (name === "phone") {
+    
+    const cleanValue = value.replace(/\D/g, ""); 
+    setFormData({ ...formData, [name]: cleanValue });
+  } else {
+    setFormData({ ...formData, [name]: value });
   }
+};
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -47,9 +52,11 @@ function Login() {
         <p className="auth-subtitle">Login to continue your experience</p>
 
         <input
-          type="number"
+          type="tel"
           name="phone"
+          maxLength={10}
           placeholder="Phone Number"
+          onKeyDown={(e) => ["e", "E", "+", "-"].includes(e.key) && e.preventDefault()}
           value={formData.phone}
           onChange={handleChange}
           required
