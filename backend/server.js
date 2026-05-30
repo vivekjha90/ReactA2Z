@@ -15,7 +15,8 @@ require('dotenv').config();
 connectDB();
 
 app.use(cors({
-  origin: "https://react-a2-z.vercel.app",
+  origin: "https://react-a2-z.vercel.app", 
+  //origin: " http://localhost:5173", 
   credentials: true
 }));
 app.use(express.json());    
