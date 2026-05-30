@@ -108,3 +108,33 @@ body {
 .logout-btn:active {
   transform: translateY(0);
 }
+
+/* ── Responsive Styling ── */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+  }
+  .nav-links {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 12px;
+  }
+  .logo {
+    font-size: 1.25rem;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+  }
+  .logout-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+}

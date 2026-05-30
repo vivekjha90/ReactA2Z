@@ -82,7 +82,7 @@ const Specialists = () => {
       experience: spec.experience,
       level: spec.level,
     });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById('dashboard-page-body')?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

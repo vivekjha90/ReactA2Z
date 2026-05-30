@@ -146,7 +146,7 @@ function Dashboard() {
         .blob-3 { animation: blob 18s infinite linear; }
       `}</style>
 
-      <div style={{ display: 'flex', height: '100vh', width: '100vw', overflow: 'hidden', position: 'relative', background: '#fdfbff' }}>
+      <div style={{ display: 'flex', height: 'calc(100vh - 70px)', width: '100vw', overflow: 'hidden', position: 'relative', background: '#fdfbff' }}>
 
        
         <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
@@ -175,13 +175,13 @@ function Dashboard() {
            
             <div
               onClick={() => setDrawerOpen(false)}
-              style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(15,23,42,0.25)', backdropFilter: 'blur(2px)' }}
+              style={{ position: 'fixed', inset: 0, zIndex: 1040, background: 'rgba(15,23,42,0.25)', backdropFilter: 'blur(2px)' }}
             />
             {/* Drawer */}
             <div style={{
               ...sidebarShell,
               position: 'fixed', top: 0, left: 0, bottom: 0,
-              width: '16rem', zIndex: 50,
+              width: '16rem', zIndex: 1050,
               borderRadius: '0 1.75rem 1.75rem 0',
               display: 'flex', flexDirection: 'column',
             }}>
@@ -236,7 +236,7 @@ function Dashboard() {
           </div>
 
           {/* Page body */}
-          <div style={{ flex: 1, overflowY: 'auto' }}>
+          <div id="dashboard-page-body" style={{ flex: 1, overflowY: 'auto' }}>
             {isDashboardHome ? (
               <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 'clamp(1.5rem, 5vw, 4rem)', textAlign: 'center' }}>
 

@@ -206,3 +206,22 @@
   background-color: gray;
   cursor: not-allowed;
 }
+
+/* ── Responsive Styling ── */
+.visitor-table-container {
+  overflow-x: auto;
+  width: 100%;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-section,
+  .log-section {
+    min-width: 100% !important;
+  }
+  
+  .visitor-table {
+    min-width: 750px;
+  }
+}

@@ -76,7 +76,7 @@ const Staff = () => {
       phone: staff.phone
     });
     setEditId(staff._id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('dashboard-page-body')?.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   return (

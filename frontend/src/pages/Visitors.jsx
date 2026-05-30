@@ -82,7 +82,7 @@ const Visitors = () => {
       phone: v.phone,
       service: v.service,
     });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById('dashboard-page-body')?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const resetForm = () => {
@@ -201,67 +201,69 @@ const Visitors = () => {
         <div className="log-section">
           <div className="log-card">
             <h3 className="form-title">Recent Visitor Log</h3>
-            <table className="visitor-table">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Visitor</th>
-                  <th>Service</th>
-                  <th>Status</th>
-                  <th>TimeIn</th>
-                  <th style={{"textAlign":"center"}}>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {visitors.map((v) => (
-                  <tr key={v._id}>
-                    <td>{v.date}</td>
-                    <td>
-                      <div className="visitor-info-name">{v.name}</div>
-                      <div className="visitor-info-phone">{v.phone}</div>
-                    </td>
-                    <td>{v.service}</td>
-                    <td>
-                      <span
-                        className={`status-badge ${getStatusClass(v.status)}`}
-                      >
-                        {v.status || "Waiting"}
-                      </span>
-                    </td>
-                    <td>
-                      <span
-                        className={`status-badge ${getStatusClass(v.timeIn)}`}
-                      >
-                        {v.timeIn}
-                      </span>
-                    </td>
-                    <td>
-                      <div className="action-buttons">
-                        <button
-                          className="edit-btn"
-                          onClick={() => handleEdit(v)}
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="delete-btn"
-                          onClick={() => handleDelete(v._id)}
-                        >
-                          Delete
-                        </button>
-                        <button
-                          className="reminder-btn"
-                          onClick={() => sendReminder(v._id)}
-                          disabled={v.reminderSent}
-                        >
-                          {v.reminderSent ? "Sent" : "Send Reminder"}
-                        </button>
-                      </div>
-                    </td>
+            <div className="visitor-table-container">
+              <table className="visitor-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Visitor</th>
+                    <th>Service</th>
+                    <th>Status</th>
+                    <th>TimeIn</th>
+                    <th style={{"textAlign":"center"}}>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {visitors.map((v) => (
+                    <tr key={v._id}>
+                      <td>{v.date}</td>
+                      <td>
+                        <div className="visitor-info-name">{v.name}</div>
+                        <div className="visitor-info-phone">{v.phone}</div>
+                      </td>
+                      <td>{v.service}</td>
+                      <td>
+                        <span
+                          className={`status-badge ${getStatusClass(v.status)}`}
+                        >
+                          {v.status || "Waiting"}
+                        </span>
+                      </td>
+                      <td>
+                        <span
+                          className={`status-badge ${getStatusClass(v.timeIn)}`}
+                        >
+                          {v.timeIn}
+                        </span>
+                      </td>
+                      <td>
+                        <div className="action-buttons">
+                          <button
+                            className="edit-btn"
+                            onClick={() => handleEdit(v)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="delete-btn"
+                            onClick={() => handleDelete(v._id)}
+                          >
+                            Delete
+                          </button>
+                          <button
+                            className="reminder-btn"
+                            onClick={() => sendReminder(v._id)}
+                            disabled={v.reminderSent}
+                          >
+                            {v.reminderSent ? "Sent" : "Send Reminder"}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

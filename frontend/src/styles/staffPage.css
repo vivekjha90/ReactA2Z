@@ -46,7 +46,8 @@
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Table */
@@ -175,4 +176,10 @@
 
 .staff-cancel-btn:hover {
   background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .staff-table {
+    min-width: 650px;
+  }
 }

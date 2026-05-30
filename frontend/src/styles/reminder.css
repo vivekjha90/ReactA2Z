@@ -17,7 +17,7 @@
 .reminder-container {
   padding: 36px 32px;
   background: var(--rem-bg);
-  min-height: 100vh;
+  min-height: 100%;
   font-family: "Segoe UI", system-ui, sans-serif;
   color: var(--rem-text-primary);
 }
@@ -46,7 +46,8 @@
   background: var(--rem-card);
   border-radius: var(--rem-radius);
   box-shadow: var(--rem-shadow);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid var(--rem-border);
 }
 
@@ -151,4 +152,10 @@
   height: 3px;
   border-radius: 999px;
   background: linear-gradient(90deg, #4338ca, #ec4899);
+}
+
+@media (max-width: 768px) {
+  .reminder-table {
+    min-width: 600px;
+  }
 }

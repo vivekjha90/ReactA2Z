@@ -132,7 +132,7 @@ const Services = () => {
       duration: service.duration,
       category: service.category,
     });
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById('dashboard-page-body')?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleDelete = async (id) => {
