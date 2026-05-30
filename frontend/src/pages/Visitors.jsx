@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "/src/styles/visitor.css";
 import { createVisitor, deleteVisitor, getAllVisitor, sendTheReminder, updateVisitor } from "../API/menuPages";
+import Swal from "sweetalert2";
 
 const Visitors = () => {
   const [visitors, setVisitors] = useState([]);
@@ -53,12 +54,21 @@ const Visitors = () => {
 
   // Delete
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to remove this visitor?")) {
+    const result = await Swal.fire({
+      title: 'Are you sure you want to remove this visitor?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!'
+    });
+    
+    if (result.isConfirmed) {
       try {
         await deleteVisitor(id);
         setVisitors(visitors.filter((v) => v._id !== id));
+        Swal.fire('Deleted!', 'Visitor has been removed.', 'success');
       } catch (err) {
         console.error("Error deleting visitor:", err);
+        Swal.fire('Error!', 'Failed to delete visitor.', 'error');
       }
     }
   };
@@ -66,12 +76,12 @@ const Visitors = () => {
   const sendReminder = async (id) => {
     try {
       await sendTheReminder(id);
-      alert("Reminder sent successfully");
+      Swal.fire('Success', 'Reminder sent successfully', 'success');
 
       fetchVisitors();
     } catch (err) {
       console.error(err);
-      alert("Error sending reminder ");
+      Swal.fire('Error', 'Error sending reminder', 'error');
     }
   };
   const handleEdit = (v) => {

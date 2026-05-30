@@ -7,6 +7,7 @@ import {
   getAllSpecialist,
   updateSpecialist,
 } from "../API/menuPages";
+import Swal from "sweetalert2";
 
 const Specialists = () => {
   const [specialists, setSpecialists] = useState([]);
@@ -59,12 +60,20 @@ const Specialists = () => {
 
   // 3. Delete
   const handleDelete = async (id) => {
-    if (window.confirm("Delete this specialist?")) {
+    const result = await Swal.fire({
+      title: 'Delete this specialist?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete!'
+    });
+    if (result.isConfirmed) {
       try {
         await deleteSpecialist(id);
         setSpecialists(specialists.filter((s) => s._id !== id));
+        Swal.fire('Deleted!', 'Specialist has been removed.', 'success');
       } catch (err) {
         console.error("Error deleting specialist:", err);
+        Swal.fire('Error!', 'Failed to delete specialist.', 'error');
       }
     }
   };

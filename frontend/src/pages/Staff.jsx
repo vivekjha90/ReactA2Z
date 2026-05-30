@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import '/src/styles/staffPage.css'
 import { createStaff, deleteStaff, getAllStaff, updateStaff } from "../API/menuPages";
+import Swal from "sweetalert2";
 
 const Staff = () => {
   const [staffList, setStaffList] = useState([]);
@@ -37,25 +38,33 @@ const Staff = () => {
     try {
       if (editId) {
         await updateStaff(editId,formData);
-        alert("Staff updated successfully");
+        Swal.fire('Success', 'Staff updated successfully', 'success');
       } else {
         const res = await createStaff(formData);
-        alert(res.data.message);
+        Swal.fire('Success', res.data.message, 'success');
       }
       fetchStaff();
       handleCancel(); // Resets form 
     } catch (err) {
-      alert(err.response?.data?.message || "Error");
+      Swal.fire('Error', err.response?.data?.message || "Error", 'error');
     }
   }
 
   async function handleDelete(id) {
-    if (!window.confirm("Are you sure to delete?")) return;
+    const result = await Swal.fire({
+      title: 'Are you sure to delete?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete'
+    });
+    if (!result.isConfirmed) return;
     try {
       await deleteStaff(id);
       fetchStaff();
+      Swal.fire('Deleted!', 'Staff has been removed.', 'success');
     } catch (err) {
       console.log(err);
+      Swal.fire('Error!', 'Failed to delete staff.', 'error');
     }
   }
 

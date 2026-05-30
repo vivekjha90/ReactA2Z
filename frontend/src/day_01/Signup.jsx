@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Auth.css";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../API/authServices";
+import Swal from "sweetalert2";
 function Signup() {
   
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ function Signup() {
     try {
       const res = await registerUser(formData);
       if (res.status === 201 || res.status === 200) {
-        alert(res.data.message || "Registration Successful!");
+        Swal.fire('Success', res.data.message || "Registration Successful!", 'success');
         setFormData({
           name: "",
           phone: "",
@@ -34,7 +35,7 @@ function Signup() {
       }
     } catch (err) {
       const errorMsg = err.response?.data?.message || "User is not registered";
-      alert(errorMsg);
+      Swal.fire('Registration Failed', errorMsg, 'error');
     }
   }
   return (

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { loginUser } from "../API/authServices";
-
+import Swal from "sweetalert2";
 function Login() {
   const [formData, setFormData] = useState({
     phone: "",
@@ -30,14 +30,21 @@ function Login() {
     try {
       const res= await loginUser(formData);
       if (res.status === 200) {
-        alert(`Welcome back, ${res.data.name}!`);
+        await Swal.fire({
+          title: `Welcome back, ${res.data.name}!`,
+          icon: 'success'
+        });
         navigate("/dashboard");
         window.location.reload();
       }
     } catch (err) {
       const errorMsg =
         err.response?.data?.message || "Invalid Phone or Password";
-      alert(errorMsg);
+      Swal.fire({
+        title: 'Login Failed',
+        text: errorMsg,
+        icon: 'error'
+      });
     }
   }   
 

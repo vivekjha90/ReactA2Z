@@ -9,6 +9,7 @@ import {
   updateServices,
 } from "../API/menuPages";
 import { bookAppointments } from "../API/appointment";
+import Swal from "sweetalert2";
 
 const Services = () => {
   const [specialists, setSpecialists] = useState([]);
@@ -66,7 +67,7 @@ const Services = () => {
       !bookingData.specialist ||
       !bookingData.date
     ) {
-      alert("Please fill in all fields.");
+      Swal.fire('Error', 'Please fill in all fields.', 'error');
       return;
     }
 
@@ -80,11 +81,11 @@ const Services = () => {
 
     try {
       await bookAppointments(payload);
-      alert("Appointment Booked Successfully!");
+      Swal.fire('Success', 'Appointment Booked Successfully!', 'success');
       setShowModal(false);
     } catch (err) {
       console.error("Server Error:", err.response?.data);
-      alert("Error: " + (err.response?.data?.error || "Booking failed"));
+      Swal.fire('Error', "Error: " + (err.response?.data?.error || "Booking failed"), 'error');
     }
   };
 
@@ -136,12 +137,20 @@ const Services = () => {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to remove this service?")) {
+    const result = await Swal.fire({
+      title: 'Are you sure you want to remove this service?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, remove it!'
+    });
+    if (result.isConfirmed) {
       try {
         await deleteService(id);
         setServices(services.filter((s) => s._id !== id));
+        Swal.fire('Deleted!', 'Service has been removed.', 'success');
       } catch (err) {
         console.error("Error deleting service:", err);
+        Swal.fire('Error!', 'Failed to delete service.', 'error');
       }
     }
   };

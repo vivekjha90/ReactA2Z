@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../API/authServices";
+import Swal from "sweetalert2";
 
 
 function Navbar() {
@@ -10,21 +11,35 @@ function Navbar() {
 
  
   const handleLogout = async () => {
-  if (!window.confirm("Do you want to logout")) return;
+    const result = await Swal.fire({
+      title: 'Do you want to logout?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'OK',
+      cancelButtonText: 'Cancel'
+    });
 
-  try {
-   
-    await logoutUser();
-   
-    localStorage.clear();
+    if (!result.isConfirmed) return;
 
-    alert("Logged out successfully!");
-    navigate("/login");
+    try {
+      await logoutUser();
+      localStorage.clear();
 
-  } catch (err) {
-    console.error("Logout failed:", err);
-  }
-};
+      await Swal.fire({
+        title: 'Logged out successfully!',
+        icon: 'success'
+      });
+      navigate("/login");
+
+    } catch (err) {
+      console.error("Logout failed:", err);
+      Swal.fire({
+        title: 'Logout failed',
+        text: 'An error occurred during logout.',
+        icon: 'error'
+      });
+    }
+  };
 
   return (
     <nav className="navbar">
